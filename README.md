@@ -1,5 +1,5 @@
-# Joker-Pack-1
-Joker mod pack for Balatro
+# Balatro-Joker-Pack
 
+This mod adds three Jokers to Balatro
 
 requires [Steamodded](https://github.com/Steamopollys/Steamodded) to work
