@@ -1,6 +1,6 @@
 # Balatro-Joker-Pack
 
-This mod adds the following four Jokers to Balatro:
+This mod adds the following Jokers to Balatro:
 
 1. Good Fortune - provides you with an extra bountiful +77 Chips
 
@@ -9,6 +9,8 @@ This mod adds the following four Jokers to Balatro:
 3. Ace up the Sleeve - if you have exactly one Ace on hand, gain x11 Mult
 
 4. Restaurant - blesses you with +15 Mult for each other food Joker and even goes so far as to showering you with x25 Mult if all other Jokers are food
+
+5. Slot Machine - play three sevens to have a chance at beating the blind instantly
 
 ## Installation
 
