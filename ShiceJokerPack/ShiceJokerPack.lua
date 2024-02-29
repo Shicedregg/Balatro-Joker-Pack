@@ -2,7 +2,7 @@
 --- MOD_NAME: Shicedregg's Joker Pack
 --- MOD_ID: ShiceJokerPack
 --- MOD_AUTHOR: [Shicedregg]
---- MOD_DESCRIPTION: Adds three handmade Jokers to enhance your enjoyment of this wonderful game!
+--- MOD_DESCRIPTION: Adds five handmade Jokers to enhance your enjoyment of this wonderful game!
 
 ----------------------------------------------
 ------------MOD CODE -------------------------
@@ -81,6 +81,20 @@ function SMODS.INIT.JokerPack()
             set = "Joker",
             config = { extra = {mult = 15, x_mult = 25} },
             pos = { x = 3, y = 16 },
+        },
+        -- Roll three sevens for a chance to win big
+        j_slotMachine = {
+            order = 0,
+            unlocked = true,
+            discovered = true,
+            blueprint_compat = true,
+            eternal_compat = true,
+            rarity = 2,
+            cost = 7,
+            name = "Slot Machine",
+            set = "Joker",
+            config = { extra = 25 },
+            pos = { x = 4, y = 16 },
         }
     }
 
@@ -122,6 +136,14 @@ function SMODS.INIT.JokerPack()
                 "{C:mult}+#1#{} Mult for each other food",
                 "Joker, {X:mult,C:white} X#2# {} Mult if all",
                 "other Jokers are food"
+            }
+        },
+        j_slotMachine = {
+            name = "Slot Machine",
+            text = {
+                "{C:mult}#1#%{} chance to instantly",
+                "beat the blind if played hand",
+                "contains three {C:attention}7{}s"
             }
         }
     }
@@ -254,6 +276,21 @@ function Card.calculate_joker(self, context)
                             }
                         end
                     end
+                    if self.ability.name == "Slot Machine" then
+                        math.randomseed(os.time())
+                        local sevens_played = 0
+                        for i=1, #G.play.cards do
+                            if G.play.cards[i]:get_id() == 7 then
+                                sevens_played = sevens_played + 1
+                            end
+                        end
+                        if sevens_played >= 3 then
+                            if math.random(1,100) <= self.ability.extra then
+                                aprint("YOU WIN!!")
+                                G.GAME.chips = G.GAME.chips + G.GAME.blind.chips
+                            end
+                        end
+                    end
                 end
             end
         end
@@ -286,6 +323,9 @@ function Card.generate_UIBox_ability_table(self)
             customJoker = true
         elseif self.ability.name == "Restaurant" then
             loc_vars = {self.ability.extra.mult, self.ability.extra.x_mult}
+            customJoker = true
+        elseif self.ability.name == "Slot Machine" then
+            loc_vars = {self.ability.extra}
             customJoker = true
         end
 
