@@ -12,6 +12,8 @@ This mod adds the following Jokers to Balatro:
 
 5. Slot Machine - play three sevens to have a chance at beating the blind instantly
 
+![image of the jokers](image.png)
+
 ## Installation
 
 - download [Steamodded](https://github.com/Steamopollys/Steamodded)
